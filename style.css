@@ -1,0 +1,164 @@
+html,body{
+    height: 100%;
+    margin:0px;
+    padding: 0px;
+}
+
+h1{
+    text-align: center;
+    
+}
+
+.sessionContainer{
+    text-align: center;
+    background-color: #003366;
+}
+
+p{
+    font-size: 40px;
+    color: white;
+}
+
+.firstRow{
+    font-size: 50px;
+    display: inline-block;
+    /* margin: 0 auto;; */
+    padding: 50px;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.secondRow{
+    display: inline-block;
+    padding: 5px;
+}
+
+.break{
+    padding: 0px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 60px;
+    /* margin: 0 10px; */
+    
+}
+
+.session{
+    padding: 0px;
+    border: none;
+    background: none;
+    font-size: 60px;
+    /* margin: 0 10px; */
+    color: white;
+    
+    /* height: 20px; */
+}
+
+#rotate{
+    margin: 0px 30px;
+    border: 0px;
+    position: relative;
+    transform: rotate(-180deg);
+    bottom: 3px;
+}
+
+#Nonrotate{
+    margin: 0px 30px;
+    position: relative;
+    top: 15px;
+   
+}
+
+.display-container{
+    text-align: center;
+    background-color: #003366;
+}
+
+/* label{
+    font-size: 44px;
+    padding: 5px;
+} */
+
+/* .time-container{
+    
+} */
+
+h2{
+    color: white;
+}
+
+.time{
+    display: inline-block;
+    font-size: 44px;
+    color: white;
+    /* padding: 5px; */
+    position: relative;
+    /* bottom: 30px; */
+}
+
+.buttons{
+    position: relative;
+    bottom: 40px;
+}
+
+.btn{
+    margin: 0px 30px;
+    font-size: 40px;
+}
+
+#play {
+    /* https://css-tricks.com/making-pure-css-playpause-button/ */
+    /* create play arrow */
+    background-color: #003366;
+    width: 25px;
+    height: 25px;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 12px 0px 12px 25px;
+    border-color: #003366 #003366 #003366 white;
+    padding-right: 0px; /*to shorhten the little out of arrrow on the right side*/
+  }
+
+#pause {
+    /* create pause button */
+    background-color: #003366;
+    width: 10px;
+    height: 25px;
+    border-style: double;
+    border-width: 0px 0px 0px 12px;
+    border-color: #003366 #003366 #003366 white;
+    padding: 0px; /*to shorhten the little out of arrrow on the right side*/
+   
+    /* how to align pause with play arrwo */
+    position: relative;
+    top:13px;
+}
+
+#reset{
+    /* https://stackoverflow.com/questions/11497094/remove-border-from-buttons */
+    padding: 0px;
+    border: none;
+    background: none;
+    /* font-size: 40px; */
+
+    position: relative;
+    top: 15px;
+    color: white;
+
+    
+}
+
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+/* #timer{
+    float: right;
+    padding-right: 100px;
+    
+}  */
