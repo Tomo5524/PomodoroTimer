@@ -4,6 +4,7 @@ const minutesLabel = document.querySelector('#minutes')
 const secondsLabel = document.querySelector('#seconds')
 const sessionLabel = document.querySelector('#session')
 const breakLabel = document.querySelector('#break')
+const sound = document.querySelector('#sound')
 
 
 const btn = document.querySelectorAll('button')
@@ -18,29 +19,33 @@ btn.forEach(val => {
     val.addEventListener('click',(e)=>{
     // console.log(e)
     if(e.target.className === 'session'){
+        integerVal = parseInt(sessionLabel.innerHTML)
         if(e.target.id === 'Nonrotate'){
-            // let cur_time = parseInt(sessionLabel.innerHTML) + 1
-            // let str_curtime = cur_time+1
             sessionLabel.innerHTML = parseInt(sessionLabel.innerHTML) + 1
-            minutesLabel.innerHTML = parseInt(minutesLabel.innerHTML) + 1
-            // console.log(typeof minutesLabel.innerHTML)
-
+            minutesLabel.innerHTML = sessionLabel.innerHTML
+            // console.log(typeof minutesLabel.innerHTML)                        
         }
         else if (e.target.id === 'rotate'){
-            sessionLabel.innerHTML = parseInt(sessionLabel.innerHTML) - 1
-            minutesLabel.innerHTML = parseInt(minutesLabel.innerHTML) - 1
+            // prevent from getting negative
+            if (integerVal > 1){
+                sessionLabel.innerHTML = parseInt(sessionLabel.innerHTML) - 1
+                minutesLabel.innerHTML = sessionLabel.innerHTML
+            }            
         }
         cur_time = sessionLabel.innerHTML;
-        console.log(cur_time)
+        console.log(cur_time)       
     }
     else if (e.target.className === 'break'){
+        intBreakval = parseInt(breakLabel.innerHTML)
         if(e.target.id === 'Nonrotate'){
             // let cur_time = parseInt(sessionLabel.innerHTML) + 1
             // let str_curtime = cur_time+1
             breakLabel.innerHTML = parseInt(breakLabel.innerHTML) + 1
         }
         else if (e.target.id === 'rotate'){
-            breakLabel.innerHTML = parseInt(breakLabel.innerHTML) - 1
+            if (intBreakval > 1){
+                breakLabel.innerHTML = parseInt(breakLabel.innerHTML) - 1
+            }
         }
     
     }
@@ -71,29 +76,33 @@ function countTime(){
     let interval = setInterval(() =>{
         if (!isPaused){
             totalSeconds--
-            
-            if (secondsLabel.innerHTML.length === 1){
-                onedigit = parseInt(secondsLabel.innerHTML) - 1
+            console.log(totalSeconds,'totalseconds')
+            // when timer is over
+            if (minutesLabel.innerHTML === '0' && secondsLabel.innerHTML === '00'){
+                console.log('terminates program')
+                sound.play()
+                clearInterval(interval)
+            }
+
+            // deal with seconds when less than 10
+            else if (totalSeconds < 10 && totalSeconds >= 0){
+                // onedigit = parseInt(secondsLabel.innerHTML) - 1
                 secondsLabel.innerHTML = '0' + totalSeconds.toString()
                 console.log('a')
             }
-            else{
+            else if (totalSeconds >= 10){
                 secondsLabel.innerHTML = totalSeconds
-                console.log('b')
             }
-            minutesLabel.innerHTML = parseInt(minutesLabel.innerHTML) - 1
-        
-            console.log(totalSeconds)
-            
-            console.log(secondsLabel.innerHTML)
-            if (totalSeconds === 0 || secondsLabel.innerHTML === '00'){
+            // deal with seconds and minutes and when seconds are 00
+            else if (totalSeconds === -1){
                 totalSeconds = 59
                 secondsLabel.innerHTML = totalSeconds
-                console.log(minutesLabel.innerHTML)
+                minutesLabel.innerHTML = parseInt(minutesLabel.innerHTML) - 1
+                console.log('minus one minute')
             }
-            if (minutesLabel.innerHTML == '0' && sessionLabel.innerHTML === '00'){
-                clearInterval(interval)
-            }
+            
+            console.log(minutesLabel.innerHTML,'minutes')
+            console.log(secondsLabel.innerHTML,'seconds')
         }
         
     },1000)
